@@ -8,12 +8,33 @@
 
 /* Begin PBXBuildFile section */
 		96D694552D226BE30048B059 /* PingToolApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D694542D226BE30048B059 /* PingToolApp.swift */; };
-		96D694572D226BE30048B059 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D694562D226BE30048B059 /* ContentView.swift */; };
+		96D694572D226BE30048B059 /* MainAppIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D694562D226BE30048B059 /* MainAppIndexView.swift */; };
 		96D694592D226BE50048B059 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96D694582D226BE50048B059 /* Assets.xcassets */; };
 		96D6945D2D226BE50048B059 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96D6945C2D226BE50048B059 /* Preview Assets.xcassets */; };
 		96D694672D226BE50048B059 /* PingToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D694662D226BE50048B059 /* PingToolTests.swift */; };
 		96D694712D226BE50048B059 /* PingToolUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D694702D226BE50048B059 /* PingToolUITests.swift */; };
 		96D694732D226BE50048B059 /* PingToolUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D694722D226BE50048B059 /* PingToolUITestsLaunchTests.swift */; };
+		96D694852D226D6C0048B059 /* ItemButtonStylePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D694842D226D6C0048B059 /* ItemButtonStylePage.swift */; };
+		96D694872D226D9F0048B059 /* PingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D694862D226D9F0048B059 /* PingPage.swift */; };
+		96D694892D226E240048B059 /* IpPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D694882D226E240048B059 /* IpPage.swift */; };
+		96D6948B2D226E3B0048B059 /* DNSPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D6948A2D226E3B0048B059 /* DNSPage.swift */; };
+		96D6948D2D226E600048B059 /* TraceRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D6948C2D226E600048B059 /* TraceRoute.swift */; };
+		96D6948F2D226E7F0048B059 /* SpeedTestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D6948E2D226E7F0048B059 /* SpeedTestPage.swift */; };
+		96D694912D226EB90048B059 /* WhoIPPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D694902D226EB90048B059 /* WhoIPPage.swift */; };
+		96D694932D226EF60048B059 /* TrafficStatisticsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D694922D226EF60048B059 /* TrafficStatisticsPage.swift */; };
+		96DEB27E2D23F72E008A9FAF /* WebTestPingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEB27D2D23F72E008A9FAF /* WebTestPingPage.swift */; };
+		96DEB2802D261EB5008A9FAF /* STDPingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEB27F2D261EB5008A9FAF /* STDPingItem.swift */; };
+		96DEB2842D262C55008A9FAF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DEB2832D262C55008A9FAF /* CFNetwork.framework */; };
+		96DEB2862D278CB2008A9FAF /* PINGManagerTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEB2852D278CB2008A9FAF /* PINGManagerTool.swift */; };
+		96DEB2882D2794D6008A9FAF /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEB2872D2794D6008A9FAF /* Logger.swift */; };
+		96DEB2922D27953A008A9FAF /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEB28F2D27953A008A9FAF /* Toast.swift */; };
+		96DEB2932D27953A008A9FAF /* LoadingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEB2902D27953A008A9FAF /* LoadingManager.swift */; };
+		96DEB2942D27953A008A9FAF /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEB2912D27953A008A9FAF /* LoadingView.swift */; };
+		96DEB2962D27B1D4008A9FAF /* ItemTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEB2952D27B1D4008A9FAF /* ItemTextField.swift */; };
+		96DEB2982D27B813008A9FAF /* ItemCardContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEB2972D27B813008A9FAF /* ItemCardContainer.swift */; };
+		96DEB29A2D2BAEFD008A9FAF /* ItemText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEB2992D2BAEFD008A9FAF /* ItemText.swift */; };
+		96DEB29C2D2CAED1008A9FAF /* AnimatedGaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEB29B2D2CAED1008A9FAF /* AnimatedGaugeView.swift */; };
+		96E69FF62D228FF20065AF83 /* STSimplePingAddressTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E69FF52D228FF20065AF83 /* STSimplePingAddressTool.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +57,7 @@
 /* Begin PBXFileReference section */
 		96D694512D226BE30048B059 /* PingTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PingTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96D694542D226BE30048B059 /* PingToolApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingToolApp.swift; sourceTree = "<group>"; };
-		96D694562D226BE30048B059 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		96D694562D226BE30048B059 /* MainAppIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppIndexView.swift; sourceTree = "<group>"; };
 		96D694582D226BE50048B059 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		96D6945A2D226BE50048B059 /* PingTool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PingTool.entitlements; sourceTree = "<group>"; };
 		96D6945C2D226BE50048B059 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -45,6 +66,28 @@
 		96D6946C2D226BE50048B059 /* PingToolUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PingToolUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		96D694702D226BE50048B059 /* PingToolUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingToolUITests.swift; sourceTree = "<group>"; };
 		96D694722D226BE50048B059 /* PingToolUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingToolUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		96D694842D226D6C0048B059 /* ItemButtonStylePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemButtonStylePage.swift; sourceTree = "<group>"; };
+		96D694862D226D9F0048B059 /* PingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingPage.swift; sourceTree = "<group>"; };
+		96D694882D226E240048B059 /* IpPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IpPage.swift; sourceTree = "<group>"; };
+		96D6948A2D226E3B0048B059 /* DNSPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSPage.swift; sourceTree = "<group>"; };
+		96D6948C2D226E600048B059 /* TraceRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraceRoute.swift; sourceTree = "<group>"; };
+		96D6948E2D226E7F0048B059 /* SpeedTestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTestPage.swift; sourceTree = "<group>"; };
+		96D694902D226EB90048B059 /* WhoIPPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhoIPPage.swift; sourceTree = "<group>"; };
+		96D694922D226EF60048B059 /* TrafficStatisticsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficStatisticsPage.swift; sourceTree = "<group>"; };
+		96DEB27D2D23F72E008A9FAF /* WebTestPingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebTestPingPage.swift; sourceTree = "<group>"; };
+		96DEB27F2D261EB5008A9FAF /* STDPingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STDPingItem.swift; sourceTree = "<group>"; };
+		96DEB2812D262C4B008A9FAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		96DEB2832D262C55008A9FAF /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS17.2.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
+		96DEB2852D278CB2008A9FAF /* PINGManagerTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINGManagerTool.swift; sourceTree = "<group>"; };
+		96DEB2872D2794D6008A9FAF /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		96DEB28F2D27953A008A9FAF /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		96DEB2902D27953A008A9FAF /* LoadingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingManager.swift; sourceTree = "<group>"; };
+		96DEB2912D27953A008A9FAF /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		96DEB2952D27B1D4008A9FAF /* ItemTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTextField.swift; sourceTree = "<group>"; };
+		96DEB2972D27B813008A9FAF /* ItemCardContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCardContainer.swift; sourceTree = "<group>"; };
+		96DEB2992D2BAEFD008A9FAF /* ItemText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemText.swift; sourceTree = "<group>"; };
+		96DEB29B2D2CAED1008A9FAF /* AnimatedGaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedGaugeView.swift; sourceTree = "<group>"; };
+		96E69FF52D228FF20065AF83 /* STSimplePingAddressTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STSimplePingAddressTool.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96DEB2842D262C55008A9FAF /* CFNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +123,7 @@
 				96D694652D226BE50048B059 /* PingToolTests */,
 				96D6946F2D226BE50048B059 /* PingToolUITests */,
 				96D694522D226BE30048B059 /* Products */,
+				96DEB2822D262C55008A9FAF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,8 +140,14 @@
 		96D694532D226BE30048B059 /* PingTool */ = {
 			isa = PBXGroup;
 			children = (
+				96DEB2812D262C4B008A9FAF /* Info.plist */,
+				96D694832D226D5F0048B059 /* Components */,
+				96D694822D226C9E0048B059 /* Pages */,
+				96D694812D226C890048B059 /* Tools */,
+				96D694802D226C7F0048B059 /* Model */,
+				96D6947F2D226C740048B059 /* NetWorkApi */,
 				96D694542D226BE30048B059 /* PingToolApp.swift */,
-				96D694562D226BE30048B059 /* ContentView.swift */,
+				96D694562D226BE30048B059 /* MainAppIndexView.swift */,
 				96D694582D226BE50048B059 /* Assets.xcassets */,
 				96D6945A2D226BE50048B059 /* PingTool.entitlements */,
 				96D6945B2D226BE50048B059 /* Preview Content */,
@@ -127,6 +178,69 @@
 				96D694722D226BE50048B059 /* PingToolUITestsLaunchTests.swift */,
 			);
 			path = PingToolUITests;
+			sourceTree = "<group>";
+		};
+		96D6947F2D226C740048B059 /* NetWorkApi */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NetWorkApi;
+			sourceTree = "<group>";
+		};
+		96D694802D226C7F0048B059 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		96D694812D226C890048B059 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				96DEB2902D27953A008A9FAF /* LoadingManager.swift */,
+				96DEB2912D27953A008A9FAF /* LoadingView.swift */,
+				96DEB28F2D27953A008A9FAF /* Toast.swift */,
+				96E69FF52D228FF20065AF83 /* STSimplePingAddressTool.swift */,
+				96DEB27F2D261EB5008A9FAF /* STDPingItem.swift */,
+				96DEB2852D278CB2008A9FAF /* PINGManagerTool.swift */,
+				96DEB2872D2794D6008A9FAF /* Logger.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		96D694822D226C9E0048B059 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				96D694862D226D9F0048B059 /* PingPage.swift */,
+				96D694882D226E240048B059 /* IpPage.swift */,
+				96D6948A2D226E3B0048B059 /* DNSPage.swift */,
+				96D6948C2D226E600048B059 /* TraceRoute.swift */,
+				96D6948E2D226E7F0048B059 /* SpeedTestPage.swift */,
+				96D694902D226EB90048B059 /* WhoIPPage.swift */,
+				96D694922D226EF60048B059 /* TrafficStatisticsPage.swift */,
+				96DEB27D2D23F72E008A9FAF /* WebTestPingPage.swift */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		96D694832D226D5F0048B059 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				96D694842D226D6C0048B059 /* ItemButtonStylePage.swift */,
+				96DEB2952D27B1D4008A9FAF /* ItemTextField.swift */,
+				96DEB2972D27B813008A9FAF /* ItemCardContainer.swift */,
+				96DEB2992D2BAEFD008A9FAF /* ItemText.swift */,
+				96DEB29B2D2CAED1008A9FAF /* AnimatedGaugeView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		96DEB2822D262C55008A9FAF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				96DEB2832D262C55008A9FAF /* CFNetwork.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +373,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96D694572D226BE30048B059 /* ContentView.swift in Sources */,
+				96DEB2932D27953A008A9FAF /* LoadingManager.swift in Sources */,
+				96DEB2962D27B1D4008A9FAF /* ItemTextField.swift in Sources */,
+				96D694872D226D9F0048B059 /* PingPage.swift in Sources */,
+				96DEB2922D27953A008A9FAF /* Toast.swift in Sources */,
+				96D694572D226BE30048B059 /* MainAppIndexView.swift in Sources */,
+				96D6948B2D226E3B0048B059 /* DNSPage.swift in Sources */,
+				96DEB2982D27B813008A9FAF /* ItemCardContainer.swift in Sources */,
+				96D694852D226D6C0048B059 /* ItemButtonStylePage.swift in Sources */,
+				96DEB29A2D2BAEFD008A9FAF /* ItemText.swift in Sources */,
+				96DEB29C2D2CAED1008A9FAF /* AnimatedGaugeView.swift in Sources */,
+				96D6948F2D226E7F0048B059 /* SpeedTestPage.swift in Sources */,
+				96DEB27E2D23F72E008A9FAF /* WebTestPingPage.swift in Sources */,
+				96DEB2802D261EB5008A9FAF /* STDPingItem.swift in Sources */,
+				96D6948D2D226E600048B059 /* TraceRoute.swift in Sources */,
+				96D694892D226E240048B059 /* IpPage.swift in Sources */,
+				96DEB2862D278CB2008A9FAF /* PINGManagerTool.swift in Sources */,
+				96DEB2882D2794D6008A9FAF /* Logger.swift in Sources */,
+				96D694912D226EB90048B059 /* WhoIPPage.swift in Sources */,
 				96D694552D226BE30048B059 /* PingToolApp.swift in Sources */,
+				96E69FF62D228FF20065AF83 /* STSimplePingAddressTool.swift in Sources */,
+				96D694932D226EF60048B059 /* TrafficStatisticsPage.swift in Sources */,
+				96DEB2942D27953A008A9FAF /* LoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +556,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"PingTool/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PingTool/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -432,10 +567,10 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MACOSX_DEPLOYMENT_TARGET = 14;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lotawei.powerni.PingTool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -458,6 +593,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"PingTool/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PingTool/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -468,10 +604,10 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MACOSX_DEPLOYMENT_TARGET = 14;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lotawei.powerni.PingTool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
