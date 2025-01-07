@@ -1,4 +1,4 @@
-###Swift Ping Tool 
+Swift Ping tool inspire 2016 pingTool
 ###function support 
 1. ip info query
 2. ping webside
