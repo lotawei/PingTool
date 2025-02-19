@@ -54,3 +54,4 @@ struct AnimatedNavigationLink: View {
         }.buttonStyle(PlainButtonStyle())
     }
 }
+

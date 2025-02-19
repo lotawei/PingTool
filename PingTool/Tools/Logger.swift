@@ -11,7 +11,7 @@ class Logger {
     static func debug(_ message: String, function: String = #function, line: Int = #line) {
         #if DEBUG
         let file = (function as NSString).lastPathComponent
-        print("[DEBUG] \(file) - \(line): \(message)")
+        print("[DEBUG] *func*\(file) - *line*\(line): \(message)")
         #endif
     }
     
@@ -19,10 +19,10 @@ class Logger {
     static func error(_ message: String, function: String = #function, line: Int = #line) {
         #if DEBUG
         let file = (function as NSString).lastPathComponent
-        print("[ERROR] \(file) - \(line): \(message)")
+        print("[ERROR] *func*\(file) - *line*\(line): \(message)")
         #else
         // 在 Release 模式下，可以不打印错误日志，或者你可以选择记录到文件
-        // print("[ERROR] \(file) - \(line): \(message)")
+        // print("[ERROR] *func*\(file) - *line*\(line): \(message)")
         #endif
     }
     
@@ -30,7 +30,7 @@ class Logger {
     static func info(_ message: String, function: String = #function, line: Int = #line) {
         #if DEBUG
         let file = (function as NSString).lastPathComponent
-        print("[INFO] \(file) - \(line): \(message)")
+        print("[INFO] *func*\(file) - *line*\(line): \(message)")
         #endif
     }
     
@@ -38,7 +38,7 @@ class Logger {
     static func warning(_ message: String, function: String = #function, line: Int = #line) {
         #if DEBUG
         let file = (function as NSString).lastPathComponent
-        print("[WARNING] \(file) - \(line): \(message)")
+        print("[WARNING] *func*\(file) - *line*\(line): \(message)")
         #endif
     }
 }

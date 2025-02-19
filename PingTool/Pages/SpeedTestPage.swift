@@ -8,24 +8,40 @@
 import SwiftUI
 struct SpeedTestPage: View {
     @State private var currentValue: Double = 0 // 初始值
+    @State var tool:PINGManagerTool =  PINGManagerTool()
     var body: some View {
         VStack(spacing: 40) {
-            AnimatedGaugeView(value: $currentValue, maxValue: 10)
-            }
+            AnimatedGaugeView(value: $currentValue, maxValue: 30)
+        }
         .onAppear{
             loadTestUrl()
         }
-            .padding()
+        .onDisappear{
+            tool.cancelDownloadTask()
+        }
+        .padding()
+        .removeBar()
     }
 }
-extension  SpeedTestPage{
+extension  SpeedTestPage:NetSpeedResultHandler{
+    func speedNet(speed: Double) {
+        Logger.debug("\(speed)")
+        currentValue = speed
+    }
+    
+    func avgSpeed(avgspeed: Double) {
+        Logger.debug("\(avgspeed)")
+        currentValue = avgspeed
+    }
+    
+    
     func loadTestUrl()  {
-        guard let url = URL(string:"https://nbg1-speed.hetzner.com/100MB.bin" ) else{
+        guard let url = URL(string:"https://speedtest-co.turnkeyinternet.net/100mb.bin" ) else{
             Logger.debug("Url invalid")
             return
         }
-        PINGManagerTool.testDownloadSpeedWithLiveUpdate(from:url, duration: 5) { speed in
-            currentValue = speed
-        }
+        tool.startSpeedTest(from: url, duration: 10, updateSpeedHandler:self)
+        
     }
+    
 }

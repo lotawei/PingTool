@@ -40,6 +40,7 @@ struct DNSPage: View {
             })
         .padding(EdgeInsets(top: 50, leading: 0, bottom: 0, trailing: 0))
         .animation(.spring)
+        .removeBar()
         
     }
 }

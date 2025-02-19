@@ -8,7 +8,20 @@
 import Foundation
 import Network
 import SystemConfiguration
-struct PINGManagerTool {
+protocol NetSpeedResultHandler{
+    func  speedNet(speed:Double)
+    func  avgSpeed(avgspeed:Double)
+}
+
+class PINGManagerTool:NSObject {
+    var  updateSpeedHandler:NetSpeedResultHandler? = nil
+    private var session: URLSession!
+    private var downloadTask: URLSessionDownloadTask?
+    private var totalBytesReceived: Int64 = 0
+    private var lastBytesReceived: Int64 = 0
+    private var startTime: CFAbsoluteTime = 0
+    private var lastUpdateTime: CFAbsoluteTime = 0
+    
     static func getLocalAddressIp() -> String? {
         var address: String?
         var ifaddr: UnsafeMutablePointer<ifaddrs>? = nil
@@ -72,7 +85,6 @@ struct PINGManagerTool {
             }
             completion(ipAddress)
         }
-        
         task.resume()
     }
     
@@ -132,169 +144,215 @@ struct PINGManagerTool {
     }
     
     /// 获取默认网关 IP 地址
-        /// - Returns: 默认网关 IP 地址
-        static func getDefaultGateway() -> String? {
-            #if os(macOS)
-            return getDefaultGatewayMacOS()
-            #elseif os(iOS)
-            return getDefaultGatewayiOS()
-            #else
-            return nil
-            #endif
-        }
-        #if os(macOS)
-        /// macOS: 使用 netstat 命令获取默认网关
-        private static func getDefaultGatewayMacOS() -> String? {
-            let command = "netstat -rn"
-            let pipe = Pipe()
-            let process = Process()
-            process.standardOutput = pipe
-            process.standardError = pipe
-            process.launchPath = "/bin/bash"
-            process.arguments = ["-c", command]
-            process.launch()
-            
-            // 读取输出结果
-            let data = pipe.fileHandleForReading.readDataToEndOfFile()
-            process.waitUntilExit()
-            
-            if let output = String(data: data, encoding: .utf8) {
-                // 解析网关地址
-                let lines = output.split(separator: "\n")
-                for line in lines {
-                    let components = line.split(separator: " ", omittingEmptySubsequences: true)
-                    if components.count >= 2 && components[0] == "default" {
-                        return String(components[1]) // 默认网关 IP
-                    }
-                }
-            }
-            return nil
-        }
-        #endif
-        #if os(iOS)
-        
-        /// iOS: 使用 SystemConfiguration 获取网络信息
-        private static func getDefaultGatewayiOS() -> String? {
-            var zeroAddress = sockaddr_in()
-            zeroAddress.sin_len = UInt8(MemoryLayout<sockaddr_in>.size)
-            zeroAddress.sin_family = sa_family_t(AF_INET)
-            
-            guard let defaultRouteReachability = withUnsafePointer(to: &zeroAddress, {
-                $0.withMemoryRebound(to: sockaddr.self, capacity: 1) { zeroSockAddress in
-                    SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
-                }
-            }) else {
-                return nil
-            }
-            
-            var flags: SCNetworkReachabilityFlags = []
-            if !SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags) {
-                return nil
-            }
-            
-            if flags.contains(.reachable) && !flags.contains(.connectionRequired) {
-                return getWiFiGatewayIP()
-            }
-            
-            return nil
-        }
-        #endif
-        
-        /// iOS: 获取 Wi-Fi 网关 IP 地址
-        private static func getWiFiGatewayIP() -> String? {
-            var ifaddr: UnsafeMutablePointer<ifaddrs>?
-            guard getifaddrs(&ifaddr) == 0 else { return nil }
-            var pointer = ifaddr
-            defer { freeifaddrs(ifaddr) }
-            
-            while pointer != nil {
-                let interface = pointer!.pointee
-                let name = String(cString: interface.ifa_name)
-                
-                if name == "en0", interface.ifa_addr.pointee.sa_family == UInt8(AF_INET) {
-                    var address = sockaddr_in()
-                    memcpy(&address, interface.ifa_addr, MemoryLayout<sockaddr_in>.size)
-                    let ipString = String(cString: inet_ntoa(address.sin_addr), encoding: .ascii)
-                    return ipString
-                }
-                pointer = interface.ifa_next
-            }
-            return nil
-        }
-    
-        //https://nbg1-speed.hetzner.com/100MB.bin
-    // 实时下载速度测试
-   static func testDownloadSpeedWithLiveUpdate(from url: URL, duration: TimeInterval = 5, completion: @escaping (Double) -> Void) {
-        
-        // 计算下载速度（Mbps）
-      func calculateSpeed(bytesDownloaded: Int, elapsedTime: TimeInterval) -> Double {
-            return (Double(bytesDownloaded) * 8) / (elapsedTime * 1_000_000) // 转换为Mbps
-      }
-        // 创建子线程进行测试
-        DispatchQueue.global(qos: .background).async {
-            let startTime = CFAbsoluteTimeGetCurrent()
-            var totalBytesDownloaded: Int = 0
-            var lastUpdateTime = startTime
-            var lastBytesDownloaded = 0
-            let task = URLSession.shared.dataTask(with: url) { data, response, error in
-                let elapsedTime = CFAbsoluteTimeGetCurrent() - startTime
-                if let error = error {
-                    print("Error: \(error.localizedDescription)")
-                    completion(0)
-                    return
-                }
-
-                if let data = data {
-                    totalBytesDownloaded += data.count
-                }
-
-                // 每隔一段时间更新一次速度
-                if elapsedTime - lastUpdateTime >= 1.0 {  // 每秒更新一次
-                    let currentSpeedInMbps = calculateSpeed(bytesDownloaded: totalBytesDownloaded - lastBytesDownloaded, elapsedTime: elapsedTime - lastUpdateTime)
-                    DispatchQueue.main.async {
-                        completion(currentSpeedInMbps)
-                    }
-                    lastUpdateTime = elapsedTime
-                    lastBytesDownloaded = totalBytesDownloaded
-                }
-
-                if elapsedTime >= duration {
-                    // 计算最终下载速度
-                    let speedInMbps = calculateSpeed(bytesDownloaded: totalBytesDownloaded, elapsedTime: elapsedTime)
-                    DispatchQueue.main.async {
-                        completion(speedInMbps)
-                    }
-
-                    // 清理文件
-                    cleanUpDownloadedFile(at: url)
-                } else {
-                    // 继续下载数据直到达到指定时间
-                    testDownloadSpeedWithLiveUpdate(from: url, duration: duration, completion: completion)
-                }
-            }
-
-            task.resume()
-
-            // 保持程序运行，等待下载完成
-            RunLoop.main.run()
-        }
+    /// - Returns: 默认网关 IP 地址
+    static func getDefaultGateway() -> String? {
+#if os(macOS)
+        return getDefaultGatewayMacOS()
+#elseif os(iOS)
+        return getDefaultGatewayiOS()
+#else
+        return nil
+#endif
     }
-
+#if os(macOS)
+    /// macOS: 使用 netstat 命令获取默认网关
+    private static func getDefaultGatewayMacOS() -> String? {
+        let command = "netstat -rn"
+        let pipe = Pipe()
+        let process = Process()
+        process.standardOutput = pipe
+        process.standardError = pipe
+        process.launchPath = "/bin/bash"
+        process.arguments = ["-c", command]
+        process.launch()
+        
+        // 读取输出结果
+        let data = pipe.fileHandleForReading.readDataToEndOfFile()
+        process.waitUntilExit()
+        
+        if let output = String(data: data, encoding: .utf8) {
+            // 解析网关地址
+            let lines = output.split(separator: "\n")
+            for line in lines {
+                let components = line.split(separator: " ", omittingEmptySubsequences: true)
+                if components.count >= 2 && components[0] == "default" {
+                    return String(components[1]) // 默认网关 IP
+                }
+            }
+        }
+        return nil
+    }
+#endif
+#if os(iOS)
+    
+    /// iOS: 使用 SystemConfiguration 获取网络信息
+    private static func getDefaultGatewayiOS() -> String? {
+        var zeroAddress = sockaddr_in()
+        zeroAddress.sin_len = UInt8(MemoryLayout<sockaddr_in>.size)
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        guard let defaultRouteReachability = withUnsafePointer(to: &zeroAddress, {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) { zeroSockAddress in
+                SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
+            }
+        }) else {
+            return nil
+        }
+        
+        var flags: SCNetworkReachabilityFlags = []
+        if !SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags) {
+            return nil
+        }
+        
+        if flags.contains(.reachable) && !flags.contains(.connectionRequired) {
+            return getWiFiGatewayIP()
+        }
+        
+        return nil
+    }
+#endif
+    
+    /// iOS: 获取 Wi-Fi 网关 IP 地址
+    private static func getWiFiGatewayIP() -> String? {
+        var ifaddr: UnsafeMutablePointer<ifaddrs>?
+        guard getifaddrs(&ifaddr) == 0 else { return nil }
+        var pointer = ifaddr
+        defer { freeifaddrs(ifaddr) }
+        
+        while pointer != nil {
+            let interface = pointer!.pointee
+            let name = String(cString: interface.ifa_name)
+            
+            if name == "en0", interface.ifa_addr.pointee.sa_family == UInt8(AF_INET) {
+                var address = sockaddr_in()
+                memcpy(&address, interface.ifa_addr, MemoryLayout<sockaddr_in>.size)
+                let ipString = String(cString: inet_ntoa(address.sin_addr), encoding: .ascii)
+                return ipString
+            }
+            pointer = interface.ifa_next
+        }
+        return nil
+    }
+    
+    //https://nbg1-speed.hetzner.com/100MB.bin
     // 删除下载的文件（如果需要）
-   static func cleanUpDownloadedFile(at url: URL) {
-        // 假设你下载的文件是存储在本地的临时文件，可以根据情况调整路径
+    func cleanUpDownloadedFile(at url: URL) {
         let fileManager = FileManager.default
-        let tempFilePath = "/path/to/temp/file"  // 临时文件路径
-
         do {
-            if fileManager.fileExists(atPath: tempFilePath) {
-                try fileManager.removeItem(atPath: tempFilePath)
-                print("Temporary file deleted.")
-            }
+            try fileManager.removeItem(at: url)
+            print("Downloaded file deleted.")
         } catch {
-            print("Failed to delete temporary file: \(error.localizedDescription)")
+            print("Failed to delete downloaded file: \(error.localizedDescription)")
         }
     }
-
+    // 设置实时网速更新
+    func startSpeedTest(from url: URL, duration: TimeInterval, updateSpeedHandler:NetSpeedResultHandler) {
+        self.updateSpeedHandler = updateSpeedHandler
+        // 配置 URLSession
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = duration + 5 // 增加超时时间
+        configuration.timeoutIntervalForResource = duration + 5
+        self.session = URLSession(configuration: configuration, delegate: self, delegateQueue: OperationQueue())
+        
+        // 初始化统计参数
+        totalBytesReceived = 0
+        startTime = CFAbsoluteTimeGetCurrent()
+        lastUpdateTime = startTime // 确保 lastUpdateTime 被初始化为 startTime
+        lastBytesReceived = 0
+        
+        // 创建下载任务
+        downloadTask = session.downloadTask(with: url)
+        downloadTask?.resume()
+    }
     
+    // 计算下载速度（Mbps）
+    // 计算速度
+    func calculateSpeed(bytesReceived: Int64, elapsedTime: CFAbsoluteTime) -> Double {
+           let bytesPerSecond = Double(bytesReceived) / elapsedTime
+        return String.formatMBPerSecond(speed: bytesPerSecond)
+    }
+    // 取消下载任务
+    func cancelDownloadTask() {
+        downloadTask?.cancel()
+        self.downloadTask = nil
+    }
+    
+}
+
+
+
+extension  PINGManagerTool:URLSessionDownloadDelegate,URLSessionDelegate{
+    
+    // 下载完成，文件保存位置 (URLSessionDownloadDelegate)
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        print("Download finished to: \(location.path)")
+        // 在这里你可以将文件从临时位置移动到永久位置，并进行其他处理
+        DispatchQueue.main.async {
+            self.cleanUpDownloadedFile(at: location)
+        }
+    }
+    // 下载进度更新 (URLSessionDownloadDelegate)
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+        print("didWriteData called: bytesWritten = \(bytesWritten), totalBytesWritten = \(totalBytesWritten), totalBytesExpectedToWrite = \(totalBytesExpectedToWrite)")
+        totalBytesReceived += bytesWritten
+        // 计算时间差
+        let currentTime = CFAbsoluteTimeGetCurrent()
+        let elapsedTime = currentTime - lastUpdateTime
+        
+        // 满足0.3秒间隔时更新
+        if elapsedTime >= 0.3 {
+            let speed = calculateSpeed(
+                bytesReceived: totalBytesReceived - lastBytesReceived,
+                elapsedTime: elapsedTime
+            )
+            
+            // 主线程更新UI（关键点：确保UI操作在主线程）
+            DispatchQueue.main.async { [weak self] in
+                self?.updateSpeedHandler?.speedNet(speed: speed)
+            }
+            
+            // 更新记录值
+            lastUpdateTime = currentTime
+            lastBytesReceived = totalBytesReceived
+        }
+    }
+    
+    // 下载完成处理
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        if let error = error as NSError?, error.code == NSURLErrorCancelled {
+            print("Download task canceled.")
+        } else if let error = error {
+            print("Download failed: \(error.localizedDescription)")
+        } else {
+            print("Download completed successfully.")
+            let totalElapsedTime = CFAbsoluteTimeGetCurrent() - startTime
+            let averageSpeedValue = calculateSpeed(bytesReceived: totalBytesReceived, elapsedTime: totalElapsedTime)
+            DispatchQueue.main.async {
+                self.updateSpeedHandler?.avgSpeed(avgspeed: averageSpeedValue)
+            }
+            if  let  downloadTask = task as? URLSessionDownloadTask {
+                if let url = downloadTask.originalRequest?.url {
+                    print("Original URL: \(url.absoluteString)")
+                }
+                // 获取临时文件路径，并在完成时处理它
+                if let tempFileURL = downloadTask.response as? HTTPURLResponse {
+                    print("MIMEType: \(tempFileURL.mimeType ?? "noMimeType")")
+                    print("FileSize: \(tempFileURL.expectedContentLength)")
+                }
+               
+            }
+            
+        }
+        session.finishTasksAndInvalidate()
+    }
+    
+    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge,
+                      completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+          if let serverTrust = challenge.protectionSpace.serverTrust {
+              let credential = URLCredential(trust: serverTrust)
+              completionHandler(.useCredential, credential)
+          } else {
+              completionHandler(.cancelAuthenticationChallenge, nil)
+          }
+      }
 }

@@ -21,6 +21,7 @@ struct MainAppIndexView: View {
     ]
     
     var body: some View {
+        
         NavigationView {
             List(items) { item in
                 AnimatedNavigationLink(destination: item.destination, title: item.title, color: item.color)

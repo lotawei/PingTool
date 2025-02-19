@@ -34,6 +34,8 @@
 		96DEB2982D27B813008A9FAF /* ItemCardContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEB2972D27B813008A9FAF /* ItemCardContainer.swift */; };
 		96DEB29A2D2BAEFD008A9FAF /* ItemText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEB2992D2BAEFD008A9FAF /* ItemText.swift */; };
 		96DEB29C2D2CAED1008A9FAF /* AnimatedGaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEB29B2D2CAED1008A9FAF /* AnimatedGaugeView.swift */; };
+		96DEB29E2D2D26CF008A9FAF /* Page+Nav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEB29D2D2D26CF008A9FAF /* Page+Nav.swift */; };
+		96DEB2A02D5338C8008A9FAF /* String+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEB29F2D5338C8008A9FAF /* String+Ex.swift */; };
 		96E69FF62D228FF20065AF83 /* STSimplePingAddressTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E69FF52D228FF20065AF83 /* STSimplePingAddressTool.swift */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +89,8 @@
 		96DEB2972D27B813008A9FAF /* ItemCardContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCardContainer.swift; sourceTree = "<group>"; };
 		96DEB2992D2BAEFD008A9FAF /* ItemText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemText.swift; sourceTree = "<group>"; };
 		96DEB29B2D2CAED1008A9FAF /* AnimatedGaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedGaugeView.swift; sourceTree = "<group>"; };
+		96DEB29D2D2D26CF008A9FAF /* Page+Nav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Page+Nav.swift"; sourceTree = "<group>"; };
+		96DEB29F2D5338C8008A9FAF /* String+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ex.swift"; sourceTree = "<group>"; };
 		96E69FF52D228FF20065AF83 /* STSimplePingAddressTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STSimplePingAddressTool.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -197,6 +201,7 @@
 		96D694812D226C890048B059 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				96DEB29F2D5338C8008A9FAF /* String+Ex.swift */,
 				96DEB2902D27953A008A9FAF /* LoadingManager.swift */,
 				96DEB2912D27953A008A9FAF /* LoadingView.swift */,
 				96DEB28F2D27953A008A9FAF /* Toast.swift */,
@@ -231,6 +236,7 @@
 				96DEB2972D27B813008A9FAF /* ItemCardContainer.swift */,
 				96DEB2992D2BAEFD008A9FAF /* ItemText.swift */,
 				96DEB29B2D2CAED1008A9FAF /* AnimatedGaugeView.swift */,
+				96DEB29D2D2D26CF008A9FAF /* Page+Nav.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -382,11 +388,13 @@
 				96DEB2982D27B813008A9FAF /* ItemCardContainer.swift in Sources */,
 				96D694852D226D6C0048B059 /* ItemButtonStylePage.swift in Sources */,
 				96DEB29A2D2BAEFD008A9FAF /* ItemText.swift in Sources */,
+				96DEB2A02D5338C8008A9FAF /* String+Ex.swift in Sources */,
 				96DEB29C2D2CAED1008A9FAF /* AnimatedGaugeView.swift in Sources */,
 				96D6948F2D226E7F0048B059 /* SpeedTestPage.swift in Sources */,
 				96DEB27E2D23F72E008A9FAF /* WebTestPingPage.swift in Sources */,
 				96DEB2802D261EB5008A9FAF /* STDPingItem.swift in Sources */,
 				96D6948D2D226E600048B059 /* TraceRoute.swift in Sources */,
+				96DEB29E2D2D26CF008A9FAF /* Page+Nav.swift in Sources */,
 				96D694892D226E240048B059 /* IpPage.swift in Sources */,
 				96DEB2862D278CB2008A9FAF /* PINGManagerTool.swift in Sources */,
 				96DEB2882D2794D6008A9FAF /* Logger.swift in Sources */,
