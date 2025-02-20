@@ -7,21 +7,23 @@
 
 import SwiftUI
 struct SpeedTestPage: View {
+    
     @State private var currentValue: Double = 0 // 初始值
     @State var tool:PINGManagerTool =  PINGManagerTool()
     var body: some View {
-        VStack(spacing: 40) {
-            AnimatedGaugeView(value: $currentValue, maxValue: 30)
-        }
-        .onAppear{
-            loadTestUrl()
-        }
-        .onDisappear{
-            tool.cancelDownloadTask()
-        }
-        .padding()
-        .removeBar()
-    }
+        ItemCardContainer(content:{
+            VStack(spacing: 40) {
+                AnimatedGaugeView(value: $currentValue, maxValue: 30)
+            }
+            .onAppear{
+                loadTestUrl()
+            }
+            .onDisappear{
+                tool.cancelDownloadTask()
+            }
+            .padding()
+            .removeBar()
+        })}
 }
 extension  SpeedTestPage:NetSpeedResultHandler{
     func speedNet(speed: Double) {

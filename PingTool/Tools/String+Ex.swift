@@ -27,4 +27,10 @@ extension String{
         return speedInMB
     }
     
+    // Mbps
+    static func formatKMBPerSecond(speed: Double) -> Double {
+        let speedInKMB = (speed / (1024 * 1024) ) * 8
+        return speedInKMB
+    }
+    
 }

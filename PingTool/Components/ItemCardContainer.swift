@@ -23,7 +23,7 @@ struct ItemCardContainer<Content: View>: View {
             ZStack {
                 // 渐变背景
                 LinearGradient(gradient: gradient, startPoint: .topLeading, endPoint: .bottomTrailing)
-                    .frame(width: geometry.size.width * 0.7, height: 150)
+                    .frame(width: geometry.size.width * 1, height: geometry.size.height)
                     .cornerRadius(cornerRadius)
                     .overlay(
                         // 毛玻璃效果
@@ -35,7 +35,7 @@ struct ItemCardContainer<Content: View>: View {
                 
                 // 子视图内容
                 content()
-                    .frame(width: geometry.size.width * 0.7, height: 150)
+                    .frame(width: geometry.size.width, height: geometry.size.height)
             }
             .frame(maxWidth: geometry.size.width)
         }

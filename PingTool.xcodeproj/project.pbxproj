@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		968965892D65FFEB0002E507 /* Pinger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968965882D65FFE80002E507 /* Pinger.swift */; };
+		9689658B2D660F0F0002E507 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9689658A2D660F0F0002E507 /* CoreFoundation.framework */; };
+		9689658D2D66CFE10002E507 /* CommandLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9689658C2D66CFD80002E507 /* CommandLineView.swift */; };
 		96D694552D226BE30048B059 /* PingToolApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D694542D226BE30048B059 /* PingToolApp.swift */; };
 		96D694572D226BE30048B059 /* MainAppIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D694562D226BE30048B059 /* MainAppIndexView.swift */; };
 		96D694592D226BE50048B059 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96D694582D226BE50048B059 /* Assets.xcassets */; };
@@ -23,7 +26,6 @@
 		96D694912D226EB90048B059 /* WhoIPPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D694902D226EB90048B059 /* WhoIPPage.swift */; };
 		96D694932D226EF60048B059 /* TrafficStatisticsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D694922D226EF60048B059 /* TrafficStatisticsPage.swift */; };
 		96DEB27E2D23F72E008A9FAF /* WebTestPingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEB27D2D23F72E008A9FAF /* WebTestPingPage.swift */; };
-		96DEB2802D261EB5008A9FAF /* STDPingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEB27F2D261EB5008A9FAF /* STDPingItem.swift */; };
 		96DEB2842D262C55008A9FAF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DEB2832D262C55008A9FAF /* CFNetwork.framework */; };
 		96DEB2862D278CB2008A9FAF /* PINGManagerTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEB2852D278CB2008A9FAF /* PINGManagerTool.swift */; };
 		96DEB2882D2794D6008A9FAF /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEB2872D2794D6008A9FAF /* Logger.swift */; };
@@ -57,6 +59,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		968965882D65FFE80002E507 /* Pinger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pinger.swift; sourceTree = "<group>"; };
+		9689658A2D660F0F0002E507 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.2.sdk/System/Library/Frameworks/CoreFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		9689658C2D66CFD80002E507 /* CommandLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLineView.swift; sourceTree = "<group>"; };
 		96D694512D226BE30048B059 /* PingTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PingTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96D694542D226BE30048B059 /* PingToolApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingToolApp.swift; sourceTree = "<group>"; };
 		96D694562D226BE30048B059 /* MainAppIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppIndexView.swift; sourceTree = "<group>"; };
@@ -77,7 +82,6 @@
 		96D694902D226EB90048B059 /* WhoIPPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhoIPPage.swift; sourceTree = "<group>"; };
 		96D694922D226EF60048B059 /* TrafficStatisticsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficStatisticsPage.swift; sourceTree = "<group>"; };
 		96DEB27D2D23F72E008A9FAF /* WebTestPingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebTestPingPage.swift; sourceTree = "<group>"; };
-		96DEB27F2D261EB5008A9FAF /* STDPingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STDPingItem.swift; sourceTree = "<group>"; };
 		96DEB2812D262C4B008A9FAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		96DEB2832D262C55008A9FAF /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS17.2.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
 		96DEB2852D278CB2008A9FAF /* PINGManagerTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINGManagerTool.swift; sourceTree = "<group>"; };
@@ -99,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9689658B2D660F0F0002E507 /* CoreFoundation.framework in Frameworks */,
 				96DEB2842D262C55008A9FAF /* CFNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -120,6 +125,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		968965852D65FFB60002E507 /* Ping */ = {
+			isa = PBXGroup;
+			children = (
+				968965882D65FFE80002E507 /* Pinger.swift */,
+			);
+			path = Ping;
+			sourceTree = "<group>";
+		};
 		96D694482D226BE30048B059 = {
 			isa = PBXGroup;
 			children = (
@@ -201,12 +214,12 @@
 		96D694812D226C890048B059 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				968965852D65FFB60002E507 /* Ping */,
 				96DEB29F2D5338C8008A9FAF /* String+Ex.swift */,
 				96DEB2902D27953A008A9FAF /* LoadingManager.swift */,
 				96DEB2912D27953A008A9FAF /* LoadingView.swift */,
 				96DEB28F2D27953A008A9FAF /* Toast.swift */,
 				96E69FF52D228FF20065AF83 /* STSimplePingAddressTool.swift */,
-				96DEB27F2D261EB5008A9FAF /* STDPingItem.swift */,
 				96DEB2852D278CB2008A9FAF /* PINGManagerTool.swift */,
 				96DEB2872D2794D6008A9FAF /* Logger.swift */,
 			);
@@ -231,6 +244,7 @@
 		96D694832D226D5F0048B059 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				9689658C2D66CFD80002E507 /* CommandLineView.swift */,
 				96D694842D226D6C0048B059 /* ItemButtonStylePage.swift */,
 				96DEB2952D27B1D4008A9FAF /* ItemTextField.swift */,
 				96DEB2972D27B813008A9FAF /* ItemCardContainer.swift */,
@@ -244,6 +258,7 @@
 		96DEB2822D262C55008A9FAF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9689658A2D660F0F0002E507 /* CoreFoundation.framework */,
 				96DEB2832D262C55008A9FAF /* CFNetwork.framework */,
 			);
 			name = Frameworks;
@@ -385,6 +400,7 @@
 				96DEB2922D27953A008A9FAF /* Toast.swift in Sources */,
 				96D694572D226BE30048B059 /* MainAppIndexView.swift in Sources */,
 				96D6948B2D226E3B0048B059 /* DNSPage.swift in Sources */,
+				968965892D65FFEB0002E507 /* Pinger.swift in Sources */,
 				96DEB2982D27B813008A9FAF /* ItemCardContainer.swift in Sources */,
 				96D694852D226D6C0048B059 /* ItemButtonStylePage.swift in Sources */,
 				96DEB29A2D2BAEFD008A9FAF /* ItemText.swift in Sources */,
@@ -392,12 +408,12 @@
 				96DEB29C2D2CAED1008A9FAF /* AnimatedGaugeView.swift in Sources */,
 				96D6948F2D226E7F0048B059 /* SpeedTestPage.swift in Sources */,
 				96DEB27E2D23F72E008A9FAF /* WebTestPingPage.swift in Sources */,
-				96DEB2802D261EB5008A9FAF /* STDPingItem.swift in Sources */,
 				96D6948D2D226E600048B059 /* TraceRoute.swift in Sources */,
 				96DEB29E2D2D26CF008A9FAF /* Page+Nav.swift in Sources */,
 				96D694892D226E240048B059 /* IpPage.swift in Sources */,
 				96DEB2862D278CB2008A9FAF /* PINGManagerTool.swift in Sources */,
 				96DEB2882D2794D6008A9FAF /* Logger.swift in Sources */,
+				9689658D2D66CFE10002E507 /* CommandLineView.swift in Sources */,
 				96D694912D226EB90048B059 /* WhoIPPage.swift in Sources */,
 				96D694552D226BE30048B059 /* PingToolApp.swift in Sources */,
 				96E69FF62D228FF20065AF83 /* STSimplePingAddressTool.swift in Sources */,
@@ -562,6 +578,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PingTool/Preview Content\"";
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PingTool/Info.plist;
@@ -599,6 +616,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PingTool/Preview Content\"";
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PingTool/Info.plist;

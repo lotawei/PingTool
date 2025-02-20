@@ -8,6 +8,8 @@
 import Foundation
 import Network
 import SystemConfiguration
+import UIKit
+import SwiftUICore
 protocol NetSpeedResultHandler{
     func  speedNet(speed:Double)
     func  avgSpeed(avgspeed:Double)
@@ -21,6 +23,9 @@ class PINGManagerTool:NSObject {
     private var lastBytesReceived: Int64 = 0
     private var startTime: CFAbsoluteTime = 0
     private var lastUpdateTime: CFAbsoluteTime = 0
+    
+    var pinger: Pinger?
+    var isPing: Bool = false
     
     static func getLocalAddressIp() -> String? {
         var address: String?
@@ -62,6 +67,31 @@ class PINGManagerTool:NSObject {
         freeifaddrs(ifaddr) // 释放资源
         return address
     }
+    func getIPByAddress(address: String, completionHandler: @escaping (String?) -> Void) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            var streamError = CFStreamError()
+            let cfhost = CFHostCreateWithName(nil, address as CFString).takeRetainedValue()
+            let status = CFHostStartInfoResolution(cfhost, .addresses, &streamError)
+            var ipAddress: String? = nil
+            if status {
+                var success: DarwinBoolean = false
+                if let addresses = CFHostGetAddressing(cfhost, &success)?.takeUnretainedValue() as? [Data] {
+                    for address in addresses {
+                        var sa: sockaddr_in = sockaddr_in()
+                        address.copyBytes(to: UnsafeMutableBufferPointer(start: &sa, count: 1))
+                        if let ip = String(cString: inet_ntoa(sa.sin_addr), encoding: .utf8) {
+                            ipAddress = ip
+                            break
+                        }
+                    }
+                }
+            }
+            DispatchQueue.main.async {
+                completionHandler(ipAddress)
+            }
+        }
+    }
+
     //获取公网IP
     static func getPublicIPAddress(completion: @escaping (String?) -> Void) {
         // 使用公网服务获取外网 IP 地址
@@ -355,4 +385,21 @@ extension  PINGManagerTool:URLSessionDownloadDelegate,URLSessionDelegate{
               completionHandler(.cancelAuthenticationChallenge, nil)
           }
       }
+}
+
+
+extension  PINGManagerTool{
+    func pingAddress(address: String, callbackHandler: ObserverPing?,finished:FinishedCallback?) {
+            isPing = true
+            pinger = try? Pinger(host: address, configuration: PingConfiguration(interval: 0.5, with: 5), queue: DispatchQueue.global())
+            pinger?.observer = callbackHandler
+            pinger?.finished = finished
+            try? pinger?.startPinging()
+       }
+
+       func stopPing() {
+           isPing = false
+           pinger?.stopPinging()
+           pinger = nil
+       }
 }

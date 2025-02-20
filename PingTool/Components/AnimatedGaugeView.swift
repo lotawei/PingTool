@@ -40,7 +40,7 @@ struct AnimatedGaugeView: View {
                 PointerView(value: value, maxValue: maxValue)
                 // 中心文字显示
                 VStack {
-                    Text("\(Int(value)) Mbps")
+                    Text(String.init(format: "%.2f Kmpbs", value * 8))
                         .font(.title2)
                         .fontWeight(.bold)
                         .foregroundColor(getNetworkInfo(for: value).color)
