@@ -15,16 +15,17 @@ struct ItemTextField: View {
     var isSecure: Bool = false
     
     @FocusState private var isFocused: Bool
+    @State private var isHovered = false
     
     var body: some View {
         HStack {
-            // 左侧图标（如果有）
             if let icon = icon {
                 Image(systemName: icon)
-                    .foregroundColor(isFocused ? .blue : .gray)
+                    .foregroundColor(isFocused ? Color(hex: "#3498DB") : .gray)
+                    .scaleEffect(isFocused ? 1.1 : 1.0)
+                    .animation(.spring(response: 0.3, dampingFraction: 0.6), value: isFocused)
             }
             
-            // 输入框
             if isSecure {
                 SecureField(placeholder, text: $text)
                     .focused($isFocused)
@@ -32,27 +33,63 @@ struct ItemTextField: View {
             } else {
                 TextField(placeholder, text: $text)
                     .focused($isFocused)
-                
                     .disableAutocorrection(true)
             }
         }
         .padding()
         .background(
-            RoundedRectangle(cornerRadius: 8)
-                .stroke(isFocused ? Color.blue : Color.gray, lineWidth: 1)
-                .background(RoundedRectangle(cornerRadius: 8).fill(Color.white))
-                .shadow(color: isFocused ? Color.blue.opacity(0.3) : Color.gray.opacity(0.1), radius: 4, x: 0, y: 2)
+            ZStack {
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(
+                        LinearGradient(
+                            gradient: Gradient(colors: [
+                                Color.white.opacity(0.9),
+                                Color.white.opacity(0.8)
+                            ]),
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(
+                                LinearGradient(
+                                    gradient: Gradient(colors: [
+                                        isFocused ? Color(hex: "#3498DB").opacity(0.8) : Color.gray.opacity(0.3),
+                                        isFocused ? Color(hex: "#3498DB").opacity(0.4) : Color.gray.opacity(0.1)
+                                    ]),
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                ),
+                                lineWidth: 1.5
+                            )
+                    )
+                    .shadow(color: isFocused ? Color(hex: "#3498DB").opacity(0.2) : Color.black.opacity(0.1), radius: isFocused ? 8 : 4, x: 0, y: 2)
+                
+                // 玻璃拟态效果
+                if isFocused {
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(Color.white.opacity(0.1))
+                        .blur(radius: 3)
+                        .mask(RoundedRectangle(cornerRadius: 12))
+                }
+            }
         )
-        .animation(.easeInOut(duration: 0.3), value: isFocused)
+        .scaleEffect(isHovered ? 1.02 : 1.0)
+        .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isHovered)
+        .onHover { hovering in
+            isHovered = hovering
+        }
         .padding(.horizontal)
     }
 }
+
 #Preview {
-    @State  var  ip:String = "";
+     @State var ip: String = ""
     return ItemTextField(
-        text:$ip,
+        text: $ip,
         placeholder: "请输入IP",
-        icon: "",
+        icon: "network",
         isSecure: false
     )
 }

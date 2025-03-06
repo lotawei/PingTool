@@ -13,7 +13,6 @@ struct AnimatedGaugeView: View {
     var body: some View {
         GeometryReader{ parent in
             ZStack {
-                // 背景弧形
                 Circle()
                     .trim(from: 0.0, to: 0.75) // 显示四分之三的弧形
                     .stroke(
@@ -21,8 +20,6 @@ struct AnimatedGaugeView: View {
                         style: StrokeStyle(lineWidth: 20, lineCap: .round)
                     )
                     .rotationEffect(.degrees(135)) // 旋转至起始角度
-                
-                // 前景弧形
                 Circle()
                     .trim(from: 0.0, to: CGFloat(min(value / maxValue, 1.0)) * 0.75)
                     .stroke(
@@ -60,13 +57,13 @@ struct AnimatedGaugeView: View {
     func getNetworkInfo(for value: Double) -> (color: Color, description: String) {
         switch value {
         case ..<0.1:
-            return (.red, "Lost: 网络丢失或不可用") // Lost
+            return (Color(hex: "#DC2430"), "Lost: 网络丢失或不可用")
         case 0.1..<5:
-            return (.yellow, "Low: 慢速网络") // Low
+            return (Color(hex: "#7B4397"), "Low: 慢速网络")
         case 5..<7:
-            return (.green.opacity(0.6), "Medium: 中速网络") // Medium (Light Green)
+            return (Color(hex: "#005BEA"), "Medium: 中速网络")
         default:
-            return (.green, "Fast: 快速网络") // Fast (Dark Green)
+            return (Color(hex: "#00C6FB"), "Fast: 快速网络")
         }
     }
 }
@@ -78,37 +75,56 @@ struct PointerView: View {
     var body: some View {
         GeometryReader { geometry in
             let size = geometry.size
-            let pointerLength = size.width * 0.5 // 指针长度
-
-            // 修正后的角度计算
-            let normalizedValue = max(0, min(value, maxValue)) // 确保 value 在 [0, maxValue] 范围内
-            let startAngle = 135.0 // 起始角度
-            let sweepAngle = 270.0 // 总角度范围
-            let angle = Angle(degrees: startAngle + (normalizedValue / maxValue) * sweepAngle + 90) //补足 360 0.25
+            let pointerLength = size.width * 0.5
+            let normalizedValue = max(0, min(value, maxValue))
+            let startAngle = 135.0
+            let sweepAngle = 270.0
+            let angle = Angle(degrees: startAngle + (normalizedValue / maxValue) * sweepAngle + 90)
             
-
             ZStack {
-                // 绘制指针
+                // 指针阴影效果
                 Rectangle()
-                    .fill(Color.red)
+                    .fill(Color.black.opacity(0.2))
                     .frame(width: 4, height: pointerLength)
-                    .offset(y: -pointerLength / 2) // 从中心点向外延伸
-                    .rotationEffect(angle) // 应用动态计算的角度
-                    .position(x: size.width / 2, y: size.height / 2) // 设置指针中心位置
+                    .offset(y: -pointerLength / 2)
+                    .rotationEffect(angle)
+                    .blur(radius: 2)
+                    .position(x: size.width / 2, y: size.height / 2)
+                
+                // 主指针
+                Rectangle()
+                    .fill(
+                        LinearGradient(
+                            colors: [Color.red.opacity(0.8), Color.red],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                    )
+                    .frame(width: 4, height: pointerLength)
+                    .offset(y: -pointerLength / 2)
+                    .rotationEffect(angle)
+                    .position(x: size.width / 2, y: size.height / 2)
 
-                // 绘制三角形箭头
+                // 金属质感箭头
                 Path { path in
-                    let triangleHeight: CGFloat = 15.0 // 三角形高度
-                    let triangleWidth: CGFloat = 10.0  // 三角形宽度
+                    let triangleHeight: CGFloat = 15.0
+                    let triangleWidth: CGFloat = 10.0
 
-                    path.move(to: CGPoint(x: size.width / 2 - triangleWidth / 2, y: size.height / 2 - pointerLength)) // 左下角
-                    path.addLine(to: CGPoint(x: size.width / 2 + triangleWidth / 2, y: size.height / 2 - pointerLength)) // 右下角
-                    path.addLine(to: CGPoint(x: size.width / 2, y: size.height / 2 - pointerLength - triangleHeight)) // 顶点
-                    path.closeSubpath() // 关闭路径，形成三角形
+                    path.move(to: CGPoint(x: size.width / 2 - triangleWidth / 2, y: size.height / 2 - pointerLength))
+                    path.addLine(to: CGPoint(x: size.width / 2 + triangleWidth / 2, y: size.height / 2 - pointerLength))
+                    path.addLine(to: CGPoint(x: size.width / 2, y: size.height / 2 - pointerLength - triangleHeight))
+                    path.closeSubpath()
                 }
-                .fill(Color.red)
-                .rotationEffect(angle) // 旋转三角形与指针同步
-                .position(x: size.width / 2, y: size.height / 2) // 设置箭头的位置
+                .fill(
+                    LinearGradient(
+                        colors: [Color.red.opacity(0.9), Color.red],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                )
+                .shadow(color: Color.black.opacity(0.3), radius: 2, x: 0, y: 2)
+                .rotationEffect(angle)
+                .position(x: size.width / 2, y: size.height / 2)
             }
         }
     }
@@ -194,7 +210,15 @@ struct DynamicArcLines: View {
                     path.move(to: CGPoint(x: x1, y: y1))
                     path.addLine(to: CGPoint(x: x2, y: y2))
                 }
-                .stroke(color, lineWidth: 6)
+                .stroke(
+                    LinearGradient(
+                        colors: [color.opacity(0.6), color],
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    ),
+                    lineWidth: 6
+                )
+                .shadow(color: color.opacity(0.3), radius: 2, x: 0, y: 0)
             }
         }
         .onAppear {

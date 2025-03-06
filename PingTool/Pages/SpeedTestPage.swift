@@ -12,7 +12,7 @@ struct SpeedTestPage: View {
     @State var tool:PINGManagerTool =  PINGManagerTool()
     var body: some View {
         ItemCardContainer(content:{
-            VStack(spacing: 40) {
+            VStack {
                 AnimatedGaugeView(value: $currentValue, maxValue: 30)
             }
             .onAppear{
@@ -21,7 +21,6 @@ struct SpeedTestPage: View {
             .onDisappear{
                 tool.cancelDownloadTask()
             }
-            .padding()
             .removeBar()
         })}
 }
