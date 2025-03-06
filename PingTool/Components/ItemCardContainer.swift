@@ -33,8 +33,6 @@ struct ItemCardContainer<Content: View>: View {
                     .frame(width: geometry.size.width, height: geometry.size.height )
                     .blur(radius: blurRadius)
                     .opacity(0.8)
-                
-//                // 玻璃效果背景
                 Color.white.opacity(0.15)
                     .background(Material.ultraThinMaterial)
                     .frame(width: geometry.size.width, height: geometry.size.height)

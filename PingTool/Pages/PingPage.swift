@@ -115,6 +115,11 @@ struct PingPage: View {
             .padding(.vertical)
             .removeBar()
         })
+        .onDisappear{
+            tool.stopPing()
+            pingData.clearText()
+            
+        }
     }
     
     var callbackhandler: ObserverPing {

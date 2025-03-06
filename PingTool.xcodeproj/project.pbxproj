@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,7 +23,6 @@
 		96D6948B2D226E3B0048B059 /* DNSPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D6948A2D226E3B0048B059 /* DNSPage.swift */; };
 		96D6948D2D226E600048B059 /* TraceRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D6948C2D226E600048B059 /* TraceRoute.swift */; };
 		96D6948F2D226E7F0048B059 /* SpeedTestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D6948E2D226E7F0048B059 /* SpeedTestPage.swift */; };
-		96D694912D226EB90048B059 /* WhoIPPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D694902D226EB90048B059 /* WhoIPPage.swift */; };
 		96D694932D226EF60048B059 /* TrafficStatisticsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D694922D226EF60048B059 /* TrafficStatisticsPage.swift */; };
 		96DEB27E2D23F72E008A9FAF /* WebTestPingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEB27D2D23F72E008A9FAF /* WebTestPingPage.swift */; };
 		96DEB2842D262C55008A9FAF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DEB2832D262C55008A9FAF /* CFNetwork.framework */; };
@@ -79,7 +78,6 @@
 		96D6948A2D226E3B0048B059 /* DNSPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSPage.swift; sourceTree = "<group>"; };
 		96D6948C2D226E600048B059 /* TraceRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraceRoute.swift; sourceTree = "<group>"; };
 		96D6948E2D226E7F0048B059 /* SpeedTestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTestPage.swift; sourceTree = "<group>"; };
-		96D694902D226EB90048B059 /* WhoIPPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhoIPPage.swift; sourceTree = "<group>"; };
 		96D694922D226EF60048B059 /* TrafficStatisticsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficStatisticsPage.swift; sourceTree = "<group>"; };
 		96DEB27D2D23F72E008A9FAF /* WebTestPingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebTestPingPage.swift; sourceTree = "<group>"; };
 		96DEB2812D262C4B008A9FAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -97,6 +95,10 @@
 		96DEB29F2D5338C8008A9FAF /* String+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ex.swift"; sourceTree = "<group>"; };
 		96E69FF52D228FF20065AF83 /* STSimplePingAddressTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STSimplePingAddressTool.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		963594E02D79B3FD00CA9E8C /* WhoIPPage */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = WhoIPPage; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		96D6944E2D226BE30048B059 /* Frameworks */ = {
@@ -229,12 +231,12 @@
 		96D694822D226C9E0048B059 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				963594E02D79B3FD00CA9E8C /* WhoIPPage */,
 				96D694862D226D9F0048B059 /* PingPage.swift */,
 				96D694882D226E240048B059 /* IpPage.swift */,
 				96D6948A2D226E3B0048B059 /* DNSPage.swift */,
 				96D6948C2D226E600048B059 /* TraceRoute.swift */,
 				96D6948E2D226E7F0048B059 /* SpeedTestPage.swift */,
-				96D694902D226EB90048B059 /* WhoIPPage.swift */,
 				96D694922D226EF60048B059 /* TrafficStatisticsPage.swift */,
 				96DEB27D2D23F72E008A9FAF /* WebTestPingPage.swift */,
 			);
@@ -278,6 +280,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				963594E02D79B3FD00CA9E8C /* WhoIPPage */,
 			);
 			name = PingTool;
 			productName = PingTool;
@@ -414,7 +419,6 @@
 				96DEB2862D278CB2008A9FAF /* PINGManagerTool.swift in Sources */,
 				96DEB2882D2794D6008A9FAF /* Logger.swift in Sources */,
 				9689658D2D66CFE10002E507 /* CommandLineView.swift in Sources */,
-				96D694912D226EB90048B059 /* WhoIPPage.swift in Sources */,
 				96D694552D226BE30048B059 /* PingToolApp.swift in Sources */,
 				96E69FF62D228FF20065AF83 /* STSimplePingAddressTool.swift in Sources */,
 				96D694932D226EF60048B059 /* TrafficStatisticsPage.swift in Sources */,

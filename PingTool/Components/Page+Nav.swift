@@ -12,11 +12,11 @@ struct CustomBackButtonModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .navigationBarBackButtonHidden(true) // 隐藏系统返回按钮
-            .navigationBarItems(leading: Button(action: {
+            .navigationBarItems(trailing: Button(action: {
                 self.presentationMode.wrappedValue.dismiss() // 触发返回
             }) {
                 HStack {
-                    Image(systemName: "chevron.left") // 自定义箭头
+                    Image(systemName: "xmark.circle") // 自定义箭头
                         .foregroundColor(.black)
                 }
             })
