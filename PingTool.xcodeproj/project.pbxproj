@@ -163,7 +163,6 @@
 				96D694832D226D5F0048B059 /* Components */,
 				96D694822D226C9E0048B059 /* Pages */,
 				96D694812D226C890048B059 /* Tools */,
-				96D694802D226C7F0048B059 /* Model */,
 				96D6947F2D226C740048B059 /* NetWorkApi */,
 				96D694542D226BE30048B059 /* PingToolApp.swift */,
 				96D694562D226BE30048B059 /* MainAppIndexView.swift */,
@@ -204,13 +203,6 @@
 			children = (
 			);
 			path = NetWorkApi;
-			sourceTree = "<group>";
-		};
-		96D694802D226C7F0048B059 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		96D694812D226C890048B059 /* Tools */ = {
