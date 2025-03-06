@@ -116,7 +116,7 @@ struct DNSInfoCard: View {
         .padding()
         .background(
             RoundedRectangle(cornerRadius: 16)
-                .fill(Color(uiColor: .systemBackground))
+                .fill(Color.white)
                 .shadow(color: Color.black.opacity(0.1), radius: 10, x: 0, y: 5)
         )
         .overlay(

@@ -74,7 +74,7 @@ struct PingPage: View {
                     
                     CommandlineTextView(data: pingData.commandlineData)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .background(Color(.systemBackground))
+                        .background(Color.black)
                         .cornerRadius(12)
                         .overlay(
                             RoundedRectangle(cornerRadius: 12)

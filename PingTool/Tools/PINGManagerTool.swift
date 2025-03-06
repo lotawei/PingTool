@@ -8,7 +8,14 @@
 import Foundation
 import Network
 import SystemConfiguration
+
+import SwiftUI
+#if os(iOS)
 import UIKit
+#else
+import AppKit
+#endif
+
 import SwiftUICore
 protocol NetSpeedResultHandler{
     func  speedNet(speed:Double)

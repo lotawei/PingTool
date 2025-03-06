@@ -13,7 +13,7 @@ struct CommandlineTextView: View {
                 VStack(alignment: .leading, spacing: 0) {
                     Text(text)
                         .font(.system(size: 14, weight: .regular, design: .monospaced))
-                        .foregroundColor(.green)
+                        .foregroundColor(.black)
                         .padding()
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .id("textBottom") // 添加ID用于滚动定位
@@ -21,8 +21,6 @@ struct CommandlineTextView: View {
             }
             .background(
                 ZStack {
-                    Color.black
-                    
                     // 添加网格线效果
                     VStack(spacing: 10) {
                         ForEach(0..<30, id: \.self) { _ in

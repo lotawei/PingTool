@@ -41,7 +41,7 @@ struct MainAppIndexView: View {
                 .padding(20)
             }
             .navigationTitle("NetWorkTool")
-            .background(Color(UIColor.systemGroupedBackground))
+            .background(Color.white)
             .background(
                 NavigationLink(destination: selectedItem?.destination,
                              isActive: $isNavigating) { EmptyView() }
@@ -82,7 +82,7 @@ struct MainAppIndexView: View {
                     .fill(
                         LinearGradient(
                             gradient: Gradient(colors: [
-                                Color(UIColor.systemBackground),
+                                Color.white,
                                 item.color.opacity(0.1)
                             ]),
                             startPoint: .topLeading,

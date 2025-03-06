@@ -15,10 +15,10 @@ struct CustomBackButtonModifier: ViewModifier {
             .navigationBarItems(trailing: Button(action: {
                 self.presentationMode.wrappedValue.dismiss() // 触发返回
             }) {
-                HStack {
+                HStack(content: {
                     Image(systemName: "xmark.circle") // 自定义箭头
                         .foregroundColor(.black)
-                }
+                })
             })
     }
 }

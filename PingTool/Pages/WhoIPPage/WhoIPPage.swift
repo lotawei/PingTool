@@ -183,7 +183,7 @@ struct CardContainer<Content: View>: View {
             .padding()
             .background(
                 ZStack {
-                    Color(.systemBackground)
+                    Color.white
                     LinearGradient(
                         colors: [.blue.opacity(0.05), .purple.opacity(0.05)],
                         startPoint: .topLeading,
