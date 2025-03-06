@@ -2,7 +2,8 @@ Swift Ping tool inspire 2016 pingTool
 SwiftPing
 ***function support*** 
 
-    ![Simulator Screenshot - iPhone 16 Pro - 2025-03-06 at 17 23 42](https://github.com/user-attachments/assets/c56c21c0-52df-4587-8924-b1fb19aa5e0e)
+  ![Uploading Simulator Screenshot - iPhone 16 Pro - 2025-03-06 at 17.23.42.png…]()
+
 
 1. ip info query
   ![Simulator Screenshot - iPhone 16 Pro - 2025-03-06 at 17 23 46](https://github.com/user-attachments/assets/f39db365-37e0-413a-b4dd-a4f4ec944cb5)
