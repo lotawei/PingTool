@@ -2,7 +2,6 @@ import SwiftUI
 
 struct ItemCardContainer<Content: View>: View {
     @State private var isHovered = false
-    @State private var isAnimating = false
     var cornerRadius: CGFloat
     var gradient: Gradient
     var blurRadius: CGFloat
@@ -26,63 +25,52 @@ struct ItemCardContainer<Content: View>: View {
     
     var body: some View {
         GeometryReader { geometry in
-                    ZStack {
-                        // 动态渐变背景
-                        AngularGradient(gradient: gradient, center: .center)
-                            .rotationEffect(Angle(degrees: isAnimating ? 360 : 0))
-                            .frame(maxWidth: .infinity, maxHeight: .infinity) // 修改这里
-                            .blur(radius: blurRadius)
-                            .opacity(0.8)
-                        
-                        Color.white.opacity(0.12)
-                            .background(Material.ultraThinMaterial)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .cornerRadius(cornerRadius)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: cornerRadius)
-                                    .stroke(Color.white.opacity(0.2), lineWidth: 0.5)
-                            )
-                        
-                        // 光效装饰
-                        Circle()
-                            .fill(
-                                LinearGradient(
-                                    colors: [Color.white.opacity(0.4), Color.white.opacity(0.1)],
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                )
-                            )
-                            .frame(width: 120, height: 120)
-                            .blur(radius: 25)
-                            .offset(x: isAnimating ? 60 : -60, y: isAnimating ? -30 : 30)
-                        
-                        // 内容层
-                        content()
-                            .frame(maxWidth: .infinity, maxHeight: .infinity) // 修改这里
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity) // 修改这里
+            ZStack {
+                // 优化的渐变背景
+                LinearGradient(gradient: gradient, startPoint: .topLeading, endPoint: .bottomTrailing)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .blur(radius: blurRadius)
+                    .opacity(0.8)
+                
+                // 玻璃拟态效果
+                Color.white.opacity(0.12)
+                    .background(Material.ultraThinMaterial)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .cornerRadius(cornerRadius)
-                    .shadow(color: Color.black.opacity(0.15), radius: 15, x: 0, y: 10)
-                    .shadow(color: Color.white.opacity(0.15), radius: 15, x: 0, y: -10)
                     .overlay(
                         RoundedRectangle(cornerRadius: cornerRadius)
-                            .stroke(Color.white.opacity(0.2), lineWidth: 1)
+                            .stroke(Color.white.opacity(0.2), lineWidth: 0.5)
                     )
-                    .scaleEffect(isHovered ? 1.02 : 1)
-                    .rotation3DEffect(
-                        .degrees(isHovered ? 2 : 0),
-                        axis: (x: 0.5, y: 1.0, z: 0.0)
+                
+                // 优化的光效装饰
+                Circle()
+                    .fill(
+                        LinearGradient(
+                            colors: [Color.white.opacity(0.4), Color.white.opacity(0.1)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
                     )
-                }
-                .animation(.spring(response: 0.4, dampingFraction: 0.8), value: isHovered)
-                .onAppear {
-                    withAnimation(.linear(duration: 1).repeatForever(autoreverses: false)) {
-                        isAnimating = true
-                    }
-                }
-                .onHover { hovering in
-                    isHovered = hovering
-                }
-            
+                    .frame(width: 120, height: 120)
+                    .blur(radius: 20)
+                    .offset(x: -30, y: 30)
+                
+                // 内容层
+                content()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .cornerRadius(cornerRadius)
+            .shadow(color: Color.black.opacity(0.1), radius: 10, x: 0, y: 5)
+            .overlay(
+                RoundedRectangle(cornerRadius: cornerRadius)
+                    .stroke(Color.white.opacity(0.2), lineWidth: 1)
+            )
+            .scaleEffect(isHovered ? 1.02 : 1)
+            .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isHovered)
+            .onHover { hovering in
+                isHovered = hovering
+            }
+        }
     }
 }
