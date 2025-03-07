@@ -11,44 +11,60 @@ struct AnimatedGaugeView: View {
     var maxValue: Double // 最大值（100+ Mbps）
     
     var body: some View {
-        GeometryReader{ parent in
+        GeometryReader { parent in
+            let size = min(parent.size.width, parent.size.height)
+            let circleSize = size * GaugeMetrics.circleScale
+            let lineWidth = size * GaugeMetrics.lineWidthScale
+            
             ZStack {
+                // 背景圆弧
                 Circle()
-                    .trim(from: 0.0, to: 0.75) // 显示四分之三的弧形
+                    .trim(from: 0.0, to: 0.75)
                     .stroke(
-                        Color.gray.opacity(0.2),
-                        style: StrokeStyle(lineWidth: 20, lineCap: .round)
+                        Color.black.opacity(0.7),
+                        style: StrokeStyle(lineWidth: lineWidth, lineCap: .round)
                     )
-                    .rotationEffect(.degrees(135)) // 旋转至起始角度
+                    .frame(width: circleSize, height: circleSize)
+                    .rotationEffect(.degrees(135))
+                
+                // 进度圆弧
                 Circle()
                     .trim(from: 0.0, to: CGFloat(min(value / maxValue, 1.0)) * 0.75)
                     .stroke(
                         LinearGradient(
-                            gradient: Gradient(colors: [getNetworkInfo(for: value).color, getNetworkInfo(for: value).color]),
+                            gradient: Gradient(colors: [
+                                getNetworkInfo(for: value).color.opacity(0.8),
+                                getNetworkInfo(for: value).color
+                            ]),
                             startPoint: .leading,
                             endPoint: .trailing
                         ),
-                        style: StrokeStyle(lineWidth: 15, lineCap: .round)
+                        style: StrokeStyle(lineWidth: lineWidth * 0.8, lineCap: .round)
                     )
+                    .frame(width: circleSize, height: circleSize)
                     .rotationEffect(.degrees(135))
                     .animation(.easeInOut(duration: 0.8), value: value)
                 
                 // 动态指针
                 PointerView(value: value, maxValue: maxValue)
+                    .frame(width: size, height: size)
+                
                 // 中心文字显示
                 VStack {
-                    Text(String.init(format: "%.2f Kmpbs", value * 8))
-                        .font(.title2)
-                        .fontWeight(.bold)
+                    Text(String(format: "%.2f Kmpbs", value * 8))
+                        .font(.system(size: size * 0.08, weight: .bold, design: .rounded))
                         .foregroundColor(getNetworkInfo(for: value).color)
                     Text(getNetworkInfo(for: value).description)
-                        .font(.headline)
+                        .font(.system(size: size * 0.05, design: .rounded))
                         .foregroundColor(Color.gray)
-                }.padding(EdgeInsets(top: 130, leading: 0, bottom: 0, trailing: 0))
-                //线条
-                DynamicArcLines(radius: parent.size.width / 2.0, lineCount: 10)
+                }
+                .padding(.top, size * 0.25)
+                
+                // 刻度线
+                DynamicArcLines(radius: circleSize * 0.5, lineCount: 10)
             }
-            .frame(width: parent.size.width, height: parent.size.height) // 仪表盘大小
+            .frame(width: size, height: size)
+            .position(x: parent.size.width / 2, y: parent.size.height / 2)
         }
         
     }
@@ -57,13 +73,13 @@ struct AnimatedGaugeView: View {
     func getNetworkInfo(for value: Double) -> (color: Color, description: String) {
         switch value {
         case ..<0.1:
-            return (Color(hex: "#DC2430"), "Lost: 网络丢失或不可用")
+            return (Color(hex: "#FF0000"), "Lost: 网络丢失或不可用")
         case 0.1..<5:
             return (Color(hex: "#7B4397"), "Low: 慢速网络")
         case 5..<7:
             return (Color(hex: "#005BEA"), "Medium: 中速网络")
         default:
-            return (Color(hex: "#00C6FB"), "Fast: 快速网络")
+            return (Color(hex: "#00FF00"), "Fast: 快速网络")
         }
     }
 }
@@ -75,7 +91,7 @@ struct PointerView: View {
     var body: some View {
         GeometryReader { geometry in
             let size = geometry.size
-            let pointerLength = size.width * 0.5
+            let pointerLength = size.width * GaugeMetrics.pointerScale
             let normalizedValue = max(0, min(value, maxValue))
             let startAngle = 135.0
             let sweepAngle = 270.0
@@ -185,9 +201,6 @@ struct DynamicArcLines: View {
         self.lineCount = lineCount
         _animationTimer = StateObject(wrappedValue: AnimationTimer(lineCount: lineCount, radius: radius))
     }
-//    init(radius: CGFloat, lineCount: Int) {
-//        _animationTimer = StateObject(wrappedValue: AnimationTimer(lineCount: lineCount, radius: radius))
-//    }
 
     var body: some View {
         GeometryReader { geometry in

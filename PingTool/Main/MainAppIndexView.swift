@@ -6,9 +6,6 @@
 //
 
 import SwiftUI
-
-
-
 struct MainAppIndexView: View {
     let items: [NavigationItem] = [
         NavigationItem(title: "Ip", color: .green, destination: AnyView(IpPage().overlay(ToastView()))),
@@ -46,6 +43,7 @@ struct MainAppIndexView: View {
                 NavigationLink(destination: selectedItem?.destination,
                              isActive: $isNavigating) { EmptyView() }
             )
+            
         }
     }
     

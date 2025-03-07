@@ -9,7 +9,7 @@ import SwiftUI
 import MapKit
 
 // IP信息模型
-struct IPInfo {
+struct IPInfo:Codable {
     var localip: String = "Loading..."
     var pubip: String = "Loading..."
     var country: String = "--"

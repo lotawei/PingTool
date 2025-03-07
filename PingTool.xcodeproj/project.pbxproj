@@ -7,37 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		963594EB2D7A97DE00CA9E8C /* CardContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963594EA2D7A97D900CA9E8C /* CardContainer.swift */; };
 		968965892D65FFEB0002E507 /* Pinger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968965882D65FFE80002E507 /* Pinger.swift */; };
 		9689658B2D660F0F0002E507 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9689658A2D660F0F0002E507 /* CoreFoundation.framework */; };
 		9689658D2D66CFE10002E507 /* CommandLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9689658C2D66CFD80002E507 /* CommandLineView.swift */; };
-		96D694552D226BE30048B059 /* PingToolApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D694542D226BE30048B059 /* PingToolApp.swift */; };
-		96D694572D226BE30048B059 /* MainAppIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D694562D226BE30048B059 /* MainAppIndexView.swift */; };
 		96D694592D226BE50048B059 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96D694582D226BE50048B059 /* Assets.xcassets */; };
 		96D6945D2D226BE50048B059 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96D6945C2D226BE50048B059 /* Preview Assets.xcassets */; };
 		96D694672D226BE50048B059 /* PingToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D694662D226BE50048B059 /* PingToolTests.swift */; };
 		96D694712D226BE50048B059 /* PingToolUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D694702D226BE50048B059 /* PingToolUITests.swift */; };
 		96D694732D226BE50048B059 /* PingToolUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D694722D226BE50048B059 /* PingToolUITestsLaunchTests.swift */; };
 		96D694852D226D6C0048B059 /* ItemButtonStylePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D694842D226D6C0048B059 /* ItemButtonStylePage.swift */; };
-		96D694872D226D9F0048B059 /* PingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D694862D226D9F0048B059 /* PingPage.swift */; };
-		96D694892D226E240048B059 /* IpPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D694882D226E240048B059 /* IpPage.swift */; };
-		96D6948B2D226E3B0048B059 /* DNSPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D6948A2D226E3B0048B059 /* DNSPage.swift */; };
-		96D6948D2D226E600048B059 /* TraceRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D6948C2D226E600048B059 /* TraceRoute.swift */; };
-		96D6948F2D226E7F0048B059 /* SpeedTestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D6948E2D226E7F0048B059 /* SpeedTestPage.swift */; };
-		96D694932D226EF60048B059 /* TrafficStatisticsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D694922D226EF60048B059 /* TrafficStatisticsPage.swift */; };
-		96DEB27E2D23F72E008A9FAF /* WebTestPingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEB27D2D23F72E008A9FAF /* WebTestPingPage.swift */; };
 		96DEB2842D262C55008A9FAF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DEB2832D262C55008A9FAF /* CFNetwork.framework */; };
 		96DEB2862D278CB2008A9FAF /* PINGManagerTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEB2852D278CB2008A9FAF /* PINGManagerTool.swift */; };
-		96DEB2882D2794D6008A9FAF /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEB2872D2794D6008A9FAF /* Logger.swift */; };
-		96DEB2922D27953A008A9FAF /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEB28F2D27953A008A9FAF /* Toast.swift */; };
-		96DEB2932D27953A008A9FAF /* LoadingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEB2902D27953A008A9FAF /* LoadingManager.swift */; };
-		96DEB2942D27953A008A9FAF /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEB2912D27953A008A9FAF /* LoadingView.swift */; };
 		96DEB2962D27B1D4008A9FAF /* ItemTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEB2952D27B1D4008A9FAF /* ItemTextField.swift */; };
 		96DEB2982D27B813008A9FAF /* ItemCardContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEB2972D27B813008A9FAF /* ItemCardContainer.swift */; };
 		96DEB29A2D2BAEFD008A9FAF /* ItemText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEB2992D2BAEFD008A9FAF /* ItemText.swift */; };
 		96DEB29C2D2CAED1008A9FAF /* AnimatedGaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEB29B2D2CAED1008A9FAF /* AnimatedGaugeView.swift */; };
 		96DEB29E2D2D26CF008A9FAF /* Page+Nav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEB29D2D2D26CF008A9FAF /* Page+Nav.swift */; };
-		96DEB2A02D5338C8008A9FAF /* String+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEB29F2D5338C8008A9FAF /* String+Ex.swift */; };
-		96E69FF62D228FF20065AF83 /* STSimplePingAddressTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E69FF52D228FF20065AF83 /* STSimplePingAddressTool.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,12 +44,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		963594EA2D7A97D900CA9E8C /* CardContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardContainer.swift; sourceTree = "<group>"; };
 		968965882D65FFE80002E507 /* Pinger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pinger.swift; sourceTree = "<group>"; };
 		9689658A2D660F0F0002E507 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.2.sdk/System/Library/Frameworks/CoreFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		9689658C2D66CFD80002E507 /* CommandLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLineView.swift; sourceTree = "<group>"; };
 		96D694512D226BE30048B059 /* PingTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PingTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		96D694542D226BE30048B059 /* PingToolApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingToolApp.swift; sourceTree = "<group>"; };
-		96D694562D226BE30048B059 /* MainAppIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppIndexView.swift; sourceTree = "<group>"; };
 		96D694582D226BE50048B059 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		96D6945A2D226BE50048B059 /* PingTool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PingTool.entitlements; sourceTree = "<group>"; };
 		96D6945C2D226BE50048B059 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -73,31 +58,31 @@
 		96D694702D226BE50048B059 /* PingToolUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingToolUITests.swift; sourceTree = "<group>"; };
 		96D694722D226BE50048B059 /* PingToolUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingToolUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		96D694842D226D6C0048B059 /* ItemButtonStylePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemButtonStylePage.swift; sourceTree = "<group>"; };
-		96D694862D226D9F0048B059 /* PingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingPage.swift; sourceTree = "<group>"; };
-		96D694882D226E240048B059 /* IpPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IpPage.swift; sourceTree = "<group>"; };
-		96D6948A2D226E3B0048B059 /* DNSPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSPage.swift; sourceTree = "<group>"; };
-		96D6948C2D226E600048B059 /* TraceRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraceRoute.swift; sourceTree = "<group>"; };
-		96D6948E2D226E7F0048B059 /* SpeedTestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTestPage.swift; sourceTree = "<group>"; };
-		96D694922D226EF60048B059 /* TrafficStatisticsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficStatisticsPage.swift; sourceTree = "<group>"; };
-		96DEB27D2D23F72E008A9FAF /* WebTestPingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebTestPingPage.swift; sourceTree = "<group>"; };
 		96DEB2812D262C4B008A9FAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		96DEB2832D262C55008A9FAF /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS17.2.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
 		96DEB2852D278CB2008A9FAF /* PINGManagerTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINGManagerTool.swift; sourceTree = "<group>"; };
-		96DEB2872D2794D6008A9FAF /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		96DEB28F2D27953A008A9FAF /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
-		96DEB2902D27953A008A9FAF /* LoadingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingManager.swift; sourceTree = "<group>"; };
-		96DEB2912D27953A008A9FAF /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		96DEB2952D27B1D4008A9FAF /* ItemTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTextField.swift; sourceTree = "<group>"; };
 		96DEB2972D27B813008A9FAF /* ItemCardContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCardContainer.swift; sourceTree = "<group>"; };
 		96DEB2992D2BAEFD008A9FAF /* ItemText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemText.swift; sourceTree = "<group>"; };
 		96DEB29B2D2CAED1008A9FAF /* AnimatedGaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedGaugeView.swift; sourceTree = "<group>"; };
 		96DEB29D2D2D26CF008A9FAF /* Page+Nav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Page+Nav.swift"; sourceTree = "<group>"; };
-		96DEB29F2D5338C8008A9FAF /* String+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ex.swift"; sourceTree = "<group>"; };
-		96E69FF52D228FF20065AF83 /* STSimplePingAddressTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STSimplePingAddressTool.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		963594E02D79B3FD00CA9E8C /* WhoIPPage */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = WhoIPPage; sourceTree = "<group>"; };
+		96F902AC2D7AD5DA00734A76 /* NetApi */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = NetApi; sourceTree = "<group>"; };
+		96F902B12D7AD62B00734A76 /* Extension */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Extension; sourceTree = "<group>"; };
+		96F902B22D7AD6AA00734A76 /* DNSPage */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = DNSPage; sourceTree = "<group>"; };
+		96F902B32D7AD6AA00734A76 /* IpPage */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = IpPage; sourceTree = "<group>"; };
+		96F902B42D7AD6AA00734A76 /* PingPage */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = PingPage; sourceTree = "<group>"; };
+		96F902B52D7AD6AA00734A76 /* SpeedTestPage */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = SpeedTestPage; sourceTree = "<group>"; };
+		96F902B62D7AD6AA00734A76 /* TraceRoutePage */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TraceRoutePage; sourceTree = "<group>"; };
+		96F902B72D7AD6AA00734A76 /* TrafficStatisticsPage */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TrafficStatisticsPage; sourceTree = "<group>"; };
+		96F902B82D7AD6AA00734A76 /* WebTestPingPage */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = WebTestPingPage; sourceTree = "<group>"; };
+		96F902BC2D7AD7AB00734A76 /* Loading */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Loading; sourceTree = "<group>"; };
+		96F902BD2D7AD7C500734A76 /* Toast */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Toast; sourceTree = "<group>"; };
+		96F902BE2D7AD80A00734A76 /* Log */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Log; sourceTree = "<group>"; };
+		96F902BF2D7AD82300734A76 /* Main */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Main; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,12 +144,11 @@
 		96D694532D226BE30048B059 /* PingTool */ = {
 			isa = PBXGroup;
 			children = (
+				96F902BF2D7AD82300734A76 /* Main */,
 				96DEB2812D262C4B008A9FAF /* Info.plist */,
 				96D694832D226D5F0048B059 /* Components */,
 				96D694822D226C9E0048B059 /* Pages */,
 				96D694812D226C890048B059 /* Tools */,
-				96D694542D226BE30048B059 /* PingToolApp.swift */,
-				96D694562D226BE30048B059 /* MainAppIndexView.swift */,
 				96D694582D226BE50048B059 /* Assets.xcassets */,
 				96D6945A2D226BE50048B059 /* PingTool.entitlements */,
 				96D6945B2D226BE50048B059 /* Preview Content */,
@@ -200,14 +184,13 @@
 		96D694812D226C890048B059 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				96F902BD2D7AD7C500734A76 /* Toast */,
+				96F902BC2D7AD7AB00734A76 /* Loading */,
+				96F902B12D7AD62B00734A76 /* Extension */,
+				96F902AC2D7AD5DA00734A76 /* NetApi */,
 				968965852D65FFB60002E507 /* Ping */,
-				96DEB29F2D5338C8008A9FAF /* String+Ex.swift */,
-				96DEB2902D27953A008A9FAF /* LoadingManager.swift */,
-				96DEB2912D27953A008A9FAF /* LoadingView.swift */,
-				96DEB28F2D27953A008A9FAF /* Toast.swift */,
-				96E69FF52D228FF20065AF83 /* STSimplePingAddressTool.swift */,
 				96DEB2852D278CB2008A9FAF /* PINGManagerTool.swift */,
-				96DEB2872D2794D6008A9FAF /* Logger.swift */,
+				96F902BE2D7AD80A00734A76 /* Log */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -216,13 +199,13 @@
 			isa = PBXGroup;
 			children = (
 				963594E02D79B3FD00CA9E8C /* WhoIPPage */,
-				96D694862D226D9F0048B059 /* PingPage.swift */,
-				96D694882D226E240048B059 /* IpPage.swift */,
-				96D6948A2D226E3B0048B059 /* DNSPage.swift */,
-				96D6948C2D226E600048B059 /* TraceRoute.swift */,
-				96D6948E2D226E7F0048B059 /* SpeedTestPage.swift */,
-				96D694922D226EF60048B059 /* TrafficStatisticsPage.swift */,
-				96DEB27D2D23F72E008A9FAF /* WebTestPingPage.swift */,
+				96F902B22D7AD6AA00734A76 /* DNSPage */,
+				96F902B32D7AD6AA00734A76 /* IpPage */,
+				96F902B42D7AD6AA00734A76 /* PingPage */,
+				96F902B52D7AD6AA00734A76 /* SpeedTestPage */,
+				96F902B62D7AD6AA00734A76 /* TraceRoutePage */,
+				96F902B72D7AD6AA00734A76 /* TrafficStatisticsPage */,
+				96F902B82D7AD6AA00734A76 /* WebTestPingPage */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -230,6 +213,7 @@
 		96D694832D226D5F0048B059 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				963594EA2D7A97D900CA9E8C /* CardContainer.swift */,
 				9689658C2D66CFD80002E507 /* CommandLineView.swift */,
 				96D694842D226D6C0048B059 /* ItemButtonStylePage.swift */,
 				96DEB2952D27B1D4008A9FAF /* ItemTextField.swift */,
@@ -267,6 +251,19 @@
 			);
 			fileSystemSynchronizedGroups = (
 				963594E02D79B3FD00CA9E8C /* WhoIPPage */,
+				96F902AC2D7AD5DA00734A76 /* NetApi */,
+				96F902B12D7AD62B00734A76 /* Extension */,
+				96F902B22D7AD6AA00734A76 /* DNSPage */,
+				96F902B32D7AD6AA00734A76 /* IpPage */,
+				96F902B42D7AD6AA00734A76 /* PingPage */,
+				96F902B52D7AD6AA00734A76 /* SpeedTestPage */,
+				96F902B62D7AD6AA00734A76 /* TraceRoutePage */,
+				96F902B72D7AD6AA00734A76 /* TrafficStatisticsPage */,
+				96F902B82D7AD6AA00734A76 /* WebTestPingPage */,
+				96F902BC2D7AD7AB00734A76 /* Loading */,
+				96F902BD2D7AD7C500734A76 /* Toast */,
+				96F902BE2D7AD80A00734A76 /* Log */,
+				96F902BF2D7AD82300734A76 /* Main */,
 			);
 			name = PingTool;
 			productName = PingTool;
@@ -383,30 +380,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96DEB2932D27953A008A9FAF /* LoadingManager.swift in Sources */,
 				96DEB2962D27B1D4008A9FAF /* ItemTextField.swift in Sources */,
-				96D694872D226D9F0048B059 /* PingPage.swift in Sources */,
-				96DEB2922D27953A008A9FAF /* Toast.swift in Sources */,
-				96D694572D226BE30048B059 /* MainAppIndexView.swift in Sources */,
-				96D6948B2D226E3B0048B059 /* DNSPage.swift in Sources */,
 				968965892D65FFEB0002E507 /* Pinger.swift in Sources */,
 				96DEB2982D27B813008A9FAF /* ItemCardContainer.swift in Sources */,
 				96D694852D226D6C0048B059 /* ItemButtonStylePage.swift in Sources */,
 				96DEB29A2D2BAEFD008A9FAF /* ItemText.swift in Sources */,
-				96DEB2A02D5338C8008A9FAF /* String+Ex.swift in Sources */,
 				96DEB29C2D2CAED1008A9FAF /* AnimatedGaugeView.swift in Sources */,
-				96D6948F2D226E7F0048B059 /* SpeedTestPage.swift in Sources */,
-				96DEB27E2D23F72E008A9FAF /* WebTestPingPage.swift in Sources */,
-				96D6948D2D226E600048B059 /* TraceRoute.swift in Sources */,
 				96DEB29E2D2D26CF008A9FAF /* Page+Nav.swift in Sources */,
-				96D694892D226E240048B059 /* IpPage.swift in Sources */,
 				96DEB2862D278CB2008A9FAF /* PINGManagerTool.swift in Sources */,
-				96DEB2882D2794D6008A9FAF /* Logger.swift in Sources */,
 				9689658D2D66CFE10002E507 /* CommandLineView.swift in Sources */,
-				96D694552D226BE30048B059 /* PingToolApp.swift in Sources */,
-				96E69FF62D228FF20065AF83 /* STSimplePingAddressTool.swift in Sources */,
-				96D694932D226EF60048B059 /* TrafficStatisticsPage.swift in Sources */,
-				96DEB2942D27953A008A9FAF /* LoadingView.swift in Sources */,
+				963594EB2D7A97DE00CA9E8C /* CardContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

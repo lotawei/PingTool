@@ -3,51 +3,77 @@ import MapKit
 
 struct WhoIPPage: View {
     @StateObject private var viewModel = WhoIPViewModel()
+    
     var body: some View {
         ItemCardContainer {
             ScrollView {
-                Button(action: viewModel.fetchIPInfo) {
-                    Image(systemName: "arrow.clockwise.circle.fill")
-                        .font(.system(size: 24))
-                        .foregroundColor(.blue)
-                        .rotationEffect(.degrees(viewModel.isLoading ? 360 : 0))
-                        .animation(viewModel.isLoading ? Animation.linear(duration: 1).repeatForever(autoreverses: false) : .default, value: viewModel.isLoading)
-                }
-                VStack(spacing: 20) {
-                   if let errorMessage = viewModel.errorMessage {
-                        ErrorView(message: errorMessage, retryAction: {
-                            viewModel.fetchIPInfo()
-                        })
-                    } else {
-                        // IP 地址卡片
-                        IPAddressCard(locaip: viewModel.ipInfo.localip, pubip: viewModel.ipInfo.pubip)
-                        
-                        // 地理位置卡片
-                        LocationCard(country: viewModel.ipInfo.country,
-                                   region: viewModel.ipInfo.region,
-                                   city: viewModel.ipInfo.city)
-                        
-                        // ISP 卡片
-                        InfoCard(title: "网络服务商",
-                                icon: "network",
-                                content: viewModel.ipInfo.isp)
-                        
-                        // 地图卡片
-                        MapCard(region: $viewModel.region)
-                        
-                        // 时区卡片
-                        InfoCard(title: "时区",
-                                icon: "clock",
-                                content: viewModel.ipInfo.timezone)
+                refreshButton
+                
+                if let errorMessage = viewModel.errorMessage {
+                    ErrorView(message: errorMessage, retryAction: viewModel.fetchIPInfo)
+                } else {
+                    LazyVStack(spacing: 20) {
+                        ipAddressSection
+                        locationSection
+                        ispSection
+                        mapSection
+                        timezoneSection
                     }
                 }
             }
-
         }
         .removeBar()
         .onAppear {
             viewModel.fetchIPInfo()
         }
+    }
+    
+    // 拆分子视图
+    private var refreshButton: some View {
+        Button(action: viewModel.fetchIPInfo) {
+            Image(systemName: "arrow.clockwise.circle.fill")
+                .font(.system(size: 24))
+                .foregroundColor(.blue)
+                .rotationEffect(.degrees(viewModel.isLoading ? 360 : 0))
+                .animation(
+                    viewModel.isLoading ?
+                        Animation.linear(duration: 1).repeatForever(autoreverses: false) :
+                        .default,
+                    value: viewModel.isLoading
+                )
+        }
+    }
+    
+    private var ipAddressSection: some View {
+        IPAddressCard(locaip: viewModel.ipInfo.localip, pubip: viewModel.ipInfo.pubip)
+    }
+    
+    private var locationSection: some View {
+        LocationCard(
+            country: viewModel.ipInfo.country,
+            region: viewModel.ipInfo.region,
+            city: viewModel.ipInfo.city
+        )
+    }
+    
+    private var ispSection: some View {
+        InfoCard(
+            title: "网络服务商",
+            icon: "network",
+            content: viewModel.ipInfo.isp
+        )
+    }
+    
+    private var mapSection: some View {
+        MapCard(region: $viewModel.region)
+    }
+    
+    private var timezoneSection: some View {
+        InfoCard(
+            title: "时区",
+            icon: "clock",
+            content: viewModel.ipInfo.timezone
+        )
     }
 }
 
@@ -170,42 +196,6 @@ struct InfoCard: View {
     }
 }
 
-// 通用卡片容器
-struct CardContainer<Content: View>: View {
-    let content: Content
-    
-    init(@ViewBuilder content: () -> Content) {
-        self.content = content()
-    }
-    
-    var body: some View {
-        content
-            .padding()
-            .background(
-                ZStack {
-                    Color.white
-                    LinearGradient(
-                        colors: [.blue.opacity(0.05), .purple.opacity(0.05)],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                }
-            )
-            .clipShape(RoundedRectangle(cornerRadius: 16))
-            .overlay(
-                RoundedRectangle(cornerRadius: 16)
-                    .stroke(
-                        LinearGradient(
-                            colors: [.blue.opacity(0.2), .purple.opacity(0.2)],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        ),
-                        lineWidth: 1
-                    )
-            )
-            .shadow(color: .blue.opacity(0.1), radius: 10, x: 0, y: 4)
-    }
-}
 
 // 卡片头部组件
 struct CardHeader: View {

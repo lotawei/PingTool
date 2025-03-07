@@ -27,6 +27,7 @@ struct NavigationItem: Identifiable {
     let title: String
     let color: Color
     let destination: AnyView
+    
 }
 //自定义 link动画效果
 

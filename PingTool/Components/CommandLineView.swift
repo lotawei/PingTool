@@ -1,6 +1,6 @@
 import SwiftUI
 import Combine
-
+// 命令行窗口模拟
 struct CommandlineTextView: View {
     @State private var text: String = ""
     
@@ -77,10 +77,7 @@ struct ScanLineView: View {
                 .offset(y: position)
                 .opacity(0.7)
                 .onAppear {
-                    withAnimation(
-                        Animation.linear(duration: 3.0)
-                            .repeatForever(autoreverses: false)
-                    ) {
+                    withAnimation{
                         position = geometry.size.height
                     }
                 }

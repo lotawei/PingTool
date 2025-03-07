@@ -8,17 +8,32 @@ extension View {
 }
 
 struct CustomBackButtonModifier: ViewModifier {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) private var dismiss
     func body(content: Content) -> some View {
         content
-            .navigationBarBackButtonHidden(true) // 隐藏系统返回按钮
-            .navigationBarItems(trailing: Button(action: {
-                self.presentationMode.wrappedValue.dismiss() // 触发返回
-            }) {
-                HStack(content: {
-                    Image(systemName: "xmark.circle") // 自定义箭头
-                        .foregroundColor(.black)
-                })
-            })
+#if os(iOS)
+           .navigationBarBackButtonHidden(true)
+           .navigationBarItems(trailing: closeButton)
+           #else
+           .toolbar {
+               ToolbarItem(placement: .navigation) {
+                   closeButton
+               }
+           }
+           #endif
     }
+    
+    private var closeButton: some View {
+         Button(action: {
+             dismiss()
+         }) {
+             Image(systemName: "xmark.circle")
+                 .font(.system(size: 16, weight: .medium))
+                 .foregroundColor(ThemeColors.textPrimary)
+         }
+         #if os(macOS)
+         .buttonStyle(.borderless)
+         .help("关闭")
+         #endif
+     }
 }
